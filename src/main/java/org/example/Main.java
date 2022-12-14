@@ -1,34 +1,27 @@
 package org.example;
 import java.util.Scanner;
 
-
-    // NOTES GANTI TABLE DAN TAMBAH TABLE REPORT EMPLOYEE
-
 public class Main {
 
     static Scanner scanner = new Scanner(System.in);
-    
 
     static void displayHome() {
-        System.out.println("===============================");
-        System.out.println("HOME");
-        System.out.println("1. View employee");
-        System.out.println("2. Search employee");
-        System.out.println("3. Update employee");
-        System.out.println("4. Delete employee");
-        System.out.println("5. Report employee");
-        System.out.println("6. Exit");
-        System.out.println("===============================");
+        println("===============================");
+        println("HOME");
+        println("1. View employee");
+        println("2. Search employee");
+        println("3. Update employee");
+        println("4. Delete employee");
+        println("5. Report employee");
+        println("6. Exit");
+        println("===============================");
     }
 
     static void viewEmployees(int amount, String [] name, String [] gender, int [] age, String [] hireDate, String [] job, double [] salary) {
         
-        // if (name == null && gender == null && age == null && hireDate == null && job == null && salary == null) {
-        //     System.out.println("Data doesn't exist!");
-        // } else {
-            System.out.println("\n============================================================================================================================");
-            System.out.println("|     Id     |     Name Employee     |     Gender     |     age     |     Hire Date     |     Job     |       Salary       |");
-            System.out.println("============================================================================================================================");
+            println("\n============================================================================================================================");
+            println("|     Id     |     Name Employee     |     Gender     |     age     |     Hire Date     |     Job     |       Salary       |");
+            println("============================================================================================================================");
     
                 for (int j = 0; j < amount; j++) {
     
@@ -42,58 +35,57 @@ public class Main {
                     System.out.println();
     
                 }
-                System.out.println("============================================================================================================================");
-        // }
-
-    }
-
-    static void viewEmployeesAfterDelete() {
+            println("============================================================================================================================");
 
     }
 
     static void createEmployee(int amount, String [] name, String [] gender, int [] age, String [] hireDate, String [] job, double [] salary) {
         
         for (int i = 0; i < amount; i++) {
-            System.out.print("\nInsert name of employee : ");
+            print("\nInsert name of employee : ");
             name[i] = scanner.next();
-            System.out.print("\nInsert gender of employee : ");
+            print("\nInsert gender of employee : ");
             gender[i] = scanner.next();
-            System.out.print("\nInsert age of employee : ");
+            print("\nInsert age of employee : ");
             age[i] = scanner.nextInt();
-            System.out.print("\nInsert hire date of employee : ");
+            print("\nInsert hire date of employee : ");
             hireDate[i] = scanner.next();
-            System.out.print("\nInsert job of employee : ");
+            print("\nInsert job of employee : ");
             job[i] = scanner.next();
-            System.out.print("\nInsert salary of employee : ");
+            print("\nInsert salary of employee : ");
             salary[i] = scanner.nextDouble();
         }
 
-        System.out.println("CREATE EMPLOYEE SUCCESS\n");
+        println("CREATE EMPLOYEE SUCCESS\n");
     }
 
     static void updateEmployee(int searchId, String [] name, String [] gender, int [] age, String [] hireDate, String [] job, double [] salary) {
 
+        String updateName, updateGender, updateHireDate, updateJob;
+        int updateAge;
+        double updateSalary;
+
         System.out.println("Id = " + searchId);
-        System.out.print("\nUpdate name of employee : ");
-        String updateName = scanner.next();
+        print("\nUpdate name of employee : ");
+        updateName = scanner.next();
         name[searchId-1] = updateName;
-        System.out.print("\nUpdate gender of employee : ");
-        String updateGender = scanner.next();
+        print("\nUpdate gender of employee : ");
+        updateGender = scanner.next();
         gender[searchId-1] = updateGender;
-        System.out.print("\nUpdate age of employee : ");
-        int updateAge = scanner.nextInt();
+        print("\nUpdate age of employee : ");
+        updateAge = scanner.nextInt();
         age[searchId-1] = updateAge;
-        System.out.print("\nUpdate hire date of employee : ");
-        String updateHireDate = scanner.next();
+        print("\nUpdate hire date of employee : ");
+        updateHireDate = scanner.next();
         hireDate[searchId-1] = updateHireDate;
-        System.out.print("\nUpdate job of employee : ");
-        String updateJob = scanner.next();
+        print("\nUpdate job of employee : ");
+        updateJob = scanner.next();
         job[searchId-1] = updateJob;
-        System.out.print("\nUpdate salary of employee : ");
-        double updateSalary = scanner.nextDouble();
+        print("\nUpdate salary of employee : ");
+        updateSalary = scanner.nextDouble();
         salary[searchId-1] = updateSalary;
 
-        System.out.println("UPDATE EMPLOYEE SUCCESS\n");
+        println("UPDATE EMPLOYEE SUCCESS\n");
     }
 
     static String [] deleteName(int searchId, String [] name) {
@@ -103,9 +95,9 @@ public class Main {
         for (int i = 0, k = 0; i < name.length; i++) {
             if (i == (searchId-1)) {
                 continue;
+            } else {
+                newName[k++] = name[i];
             }
-
-            newName[k++] = name[i];
         }
         return newName;
    
@@ -118,8 +110,9 @@ public class Main {
         for (int i = 0, k = 0; i < gender.length; i++) {
             if (i == (searchId-1)) {
                 continue;
+            } else {
+                newGender[k++] = gender[i];
             }
-            newGender[k++] = gender[i];
         }
         return newGender;
 
@@ -132,8 +125,9 @@ public class Main {
         for (int i = 0, k = 0; i < age.length; i++) {
             if (i == (searchId-1)) {
                 continue;
-            }
+            } else {
             newAge[k++] = age[i];
+            }
         }
         return newAge;
 
@@ -146,8 +140,9 @@ public class Main {
         for (int i = 0, k = 0; i < hireDate.length; i++) {
             if (i == (searchId-1)) {
                 continue;
-            }
+            } else {
             newHireDate[k++] = hireDate[i];
+            }
         }
         return newHireDate;
 
@@ -160,8 +155,9 @@ public class Main {
         for (int i = 0, k = 0; i < job.length; i++) {
             if (i == (searchId-1)) {
                 continue;
-            }
+            } else {
             newJob[k++] = job[i];
+            }
         }
         return newJob;
 
@@ -174,8 +170,9 @@ public class Main {
         for (int i = 0, k = 0; i < salary.length; i++) {
             if (i == (searchId-1)) {
                 continue;
-            }
+            } else {
             newSalary[k++] = salary[i];
+            }
         }
         return newSalary;
 
@@ -183,12 +180,9 @@ public class Main {
 
     static void searchEmployee(int searchId, String [] name, String [] gender, int [] age, String [] hireDate, String [] job, double [] salary) {
 
-        // if (name == null && gender == null && age == null && hireDate == null && job == null && salary == null) {
-        //     System.out.println("Data doesn't exist!");
-        // } else {
-            System.out.println("\n============================================================================================================================");
-            System.out.println("|     Id     |     Name Employee     |     Gender     |     age     |     Hire Date     |     Job     |       Salary       |");
-            System.out.println("============================================================================================================================");
+            println("\n============================================================================================================================");
+            println("|     Id     |     Name Employee     |     Gender     |     age     |     Hire Date     |     Job     |       Salary       |");
+            println("============================================================================================================================");
     
             System.out.print("|     " + searchId);
             System.out.print("            " + name[searchId-1]);
@@ -199,8 +193,7 @@ public class Main {
             System.out.printf("       %,.2f     |",  salary[searchId-1]);
             System.out.println();
     
-            System.out.println("============================================================================================================================");
-        // }
+            println("============================================================================================================================");
 
     }
 
@@ -219,39 +212,47 @@ public class Main {
 
         average = total / count;
 
-        System.out.println("==================================================================================================");
-        System.out.println("|     Total Employee     |     Total Salary of Employee     |     Average Salary of Employee     |");
-        System.out.println("==================================================================================================");
+        println("==================================================================================================");
+        println("|     Total Employee     |     Total Salary of Employee     |     Average Salary of Employee     |");
+        println("==================================================================================================");
         System.out.printf("|     %,d", amount);
         System.out.printf("                        %,.2f", total);
         System.out.printf("                       %,.2f                   |\n", average);
-        System.out.println("==================================================================================================");
+        println("==================================================================================================");
 
     }
     
+    static void print(String message) {
+        System.out.print(message);
+    }
+
+    static void println(String message) {
+        System.out.println(message);
+    }
+
     public static void main(String[] args) {
         
-        int amount;
-        System.out.println("===============================");
-        System.out.println("LOGIN STAFF RESTAURANT");
-        System.out.println("===============================");
-        String username, password;
+        int amount, choice, searchId;
+        String username, password, question;
+        println("===============================");
+        println("LOGIN STAFF RESTAURANT");
+        println("===============================");
         while (true) {
             
-            System.out.print("Username : ");
+            print("Username : ");
             username = scanner.next();
-            System.out.print("Password : ");
+            print("Password : ");
             password = scanner.next();
 
             if (username.equals("admin") && password.equals("admin")) {
                     
-                int choice;
                 while (true) {
-                    System.out.print("Insert amount of employee : ");
+
+                    print("Insert amount of employee : ");
                     amount = scanner.nextInt();
 
                     if (amount < 1) {
-                        System.out.println("Invalid number!");
+                        println("Invalid number!");
                     } else if (amount >= 1) {
                         break;
                     }
@@ -268,38 +269,39 @@ public class Main {
                 while (true) {
                     
                     displayHome();
-                    System.out.print("Choice number 1 - 6 : ");
+                    print("Choice number 1 - 6 : ");
                     choice = scanner.nextInt();
 
                     switch (choice) {
                         case 1:
-                            System.out.println("===============================");
-                            System.out.println("DATA EMPLOYEE");
-                            System.out.println("===============================");
+                            println("===============================");
+                            println("DATA EMPLOYEE");
+                            println("===============================");
                             viewEmployees(amount, name, gender, age, hireDate, job, salary);
                             break;
                         case 2:
-                            System.out.println("===============================");
-                            System.out.println("SEARCH EMPLOYEE");
-                            System.out.println("===============================");
-                            System.out.print("Insert id of employee : ");
-                            int searchId = scanner.nextInt();
+                            println("===============================");
+                            println("SEARCH EMPLOYEE");
+                            println("===============================");
+                            print("Insert id of employee : ");
+                            searchId = scanner.nextInt();
                             searchEmployee(searchId, name, gender, age, hireDate, job, salary);
                             break;
                         case 3:
-                            System.out.println("===============================");
-                            System.out.println("UPDATE EMPLOYEE");
-                            System.out.println("===============================");
-                            System.out.print("Insert id of employee : ");
+                            println("===============================");
+                            println("UPDATE EMPLOYEE");
+                            println("===============================");
+                            print("Insert id of employee : ");
                             searchId = scanner.nextInt();
                             updateEmployee(searchId, name, gender, age, hireDate, job, salary);
                             break;
                         case 4:
-                            System.out.println("===============================");
-                            System.out.println("DELETE EMPLOYEE");
-                            System.out.println("===============================");
-                            System.out.print("Insert id of employee : ");
+                            println("===============================");
+                            println("DELETE EMPLOYEE");
+                            println("===============================");
+                            print("Insert id of employee : ");
                             searchId = scanner.nextInt();
+                            amount--;
                             name = deleteName(searchId, name);
                             gender = deleteGender(searchId, gender);
                             age = deleteAge(searchId, age);
@@ -307,53 +309,40 @@ public class Main {
                             job = deleteJob(searchId, job);
                             salary = deleteSalary(searchId, salary);
                             
-                            for (int i = 0; i < name.length; i++) {
-                                System.out.println("Name = " + name[i]);
-                                System.out.println("Gender = " + gender[i]);
-                                System.out.println("Age = " + age[i]);
-                                System.out.println("Hire Date = " + hireDate[i]);
-                                System.out.println("Job = " + job[i]);
-                                System.out.println("Salary = " + salary[i]);
-                                System.out.println();
-                            }
+                            println("DELETE EMPLOYE SUCCESS\n");
 
                             break;
                         case 5:
-                            System.out.println("===============================");
-                            System.out.println("REPORT EMPLOYEE");
-                            System.out.println("===============================");
+                            println("===============================");
+                            println("REPORT EMPLOYEE");
+                            println("===============================");
                             reportEmployee(amount, name, gender, age, hireDate, job, salary);
                             break;
                         case 6:
                             System.exit(0);
                             break;
-                        case 7:
-                            System.out.println("===============================");
-                            System.out.println("VIEW EMPLOYEE AFTER DELETE");
-                            System.out.println("===============================");
                         default:
-                            System.out.println("Invalid input number!");
+                            println("Invalid input number!");
                             break;
                     }
-                    System.out.print("Input again (y/n) ? ");
-                    String yes = scanner.next();
+                    print("Input again (y/n) ? ");
+                    question = scanner.next();
 
-                    if (!yes.equalsIgnoreCase("y")) {
+                    if (!question.equalsIgnoreCase("y")) {
                         break;
                     }
                 }
 
                 } else {
-                    System.out.println("Username or password are wrong!");
-            }
+                    println("Username or password are wrong!");
+                }
 
             if (username.equals("admin") && password.equals("admin")) {
                 break;
             }
 
         }
-        
 
-            
     }
+
 }
